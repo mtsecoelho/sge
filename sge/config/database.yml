@@ -17,7 +17,7 @@ development:
   database: spl
   schema_search_path: "sge"
   username: postgres
-  password: ""
+  password: "admin"
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -28,6 +28,7 @@ test:
   port: 5432
   database: spl
   schema_search_path: "sge"
+  password: "admin"
 
 production:
   <<: *default
@@ -35,3 +36,4 @@ production:
   port: 5432
   database: spl
   schema_search_path: "sge"
+  password: "admin"

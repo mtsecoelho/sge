@@ -8,9 +8,9 @@ module Api
                 users = User.order('created_at DESC');
 
                 if users.blank?
-                    render json: {status: 'SUCCESS', message: 'Nenhum usuário localizado'}, status: :ok
+                    render json: {status: 'SUCCESS', message: I18n.t('messages.users.none')}, status: :ok
                 else
-                    render json: {status: 'SUCCESS', message: 'Usuarios carregados', data: users}, status: :ok
+                    render json: {status: 'SUCCESS', message: I18n.t('messages.users.loaded'), data: users}, status: :ok
                 end
             end
 
@@ -18,7 +18,7 @@ module Api
                 user = User.new(user_params)
 
                 if user.password.blank?
-                    user.errors.add(:password, "Senha não pode estar vazio")
+                    user.errors.add(:password, I18n.t('errors.messages.blank'))
                 end
 
                 if user.errors.size == 0 && user.save
